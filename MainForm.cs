@@ -7,14 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace InTask
 {
     public partial class MainForm : Form
     {
+
+        public readonly string fileText = Directory.GetCurrentDirectory() + "\\file_text.txt";
+        public readonly string fileDictionary = Directory.GetCurrentDirectory() + "\\file_dictionary.txt";
+
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Кнопка "Выполнить".
+        /// Производит проверку файла словаря и файла с текстом на наличие и соответствие максимально допустимому размеру.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            FileChecker fileChecker = new FileChecker();
+
+            if(fileChecker.CheckExists(fileText) && fileChecker.CheckSize(fileText))
+            {
+                if(fileChecker.CheckExists(fileDictionary) && fileChecker.CheckSize(fileDictionary))
+                {
+
+                }
+
+            }
         }
     }
 }
