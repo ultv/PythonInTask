@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace InTask
 {
-    class FileChecker
+    public class FileChecker
     {        
         /// <summary>
         /// Проверяет доступность файла.        
@@ -18,8 +18,7 @@ namespace InTask
         public bool CheckExists(string file)
         {
             if (!File.Exists(file))
-            {
-                MessageBox.Show($"Файл {file} не найден.");
+            {                
                 return false;               
             }
 
@@ -37,7 +36,6 @@ namespace InTask
 
             if(fileInfo.Length > 2097152)
             {
-                MessageBox.Show($"Параметры файла {file} не соответствует максимально допустимому размеру.");
                 return false;
             }
 

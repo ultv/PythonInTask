@@ -30,16 +30,31 @@ namespace InTask
         /// <param name="e"></param>
         private void buttonRun_Click(object sender, EventArgs e)
         {
-            FileChecker fileChecker = new FileChecker();
 
-            if(fileChecker.CheckExists(fileText) && fileChecker.CheckSize(fileText))
+            FileChecker fileChecker = new FileChecker();            
+
+            if (!fileChecker.CheckExists(fileText))
             {
-                if(fileChecker.CheckExists(fileDictionary) && fileChecker.CheckSize(fileDictionary))
-                {
-
-                }
+                MessageBox.Show($"Файл {fileText} не найден.");
+            }
+            else if (!fileChecker.CheckExists(fileDictionary))
+            {
+                MessageBox.Show($"Файл {fileDictionary} не найден.");
+            }
+            else if (!fileChecker.CheckSize(fileText))
+            {
+                MessageBox.Show($"Параметры файла {fileText} не соответствует максимально допустимому размеру.");
+            }
+            else if (!fileChecker.CheckSize(fileDictionary))
+            {
+                MessageBox.Show($"Параметры файла {fileDictionary} не соответствует максимально допустимому размеру.");
+            }
+            else
+            {
 
             }
+            
+
         }
     }
 }
