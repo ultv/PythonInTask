@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DictionaryController.cs" />
     <Compile Include="FileChecker.cs" />
     <Compile Include="HtmlCreator.cs" />
     <Compile Include="MainForm.cs">

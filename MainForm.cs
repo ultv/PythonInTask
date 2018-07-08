@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace InTask
 {
@@ -53,17 +54,36 @@ namespace InTask
             else
             {
                 HtmlCreator html = new HtmlCreator();
+                DictionaryController dict = new DictionaryController();
+
+                dict.LoadDictionary();
 
                 using (StreamWriter writer = new StreamWriter(fileHtml))
                 {
 
                     html.CreateHeader(writer);
 
+                    using (StreamReader reader = new StreamReader(fileText, Encoding.GetEncoding(1251)))
+                    {
+                        while (!reader.EndOfStream)
+                        {
 
+                            string strIn = reader.ReadLine();
+                            if((strIn != dict.Start) && (strIn != dict.End))
+                            {
+                                string strOut = dict.CompareDictionary(strIn);
+                                writer.WriteLine(strOut + "<br>");
+                                strOut = "";
+                            }
 
-
+                            strIn = "";                                                        
+                        }
+                    }
+                        
                     html.CreateFoother(writer);
                 }
+
+                Process.Start(fileHtml);
             }            
         }
     }
