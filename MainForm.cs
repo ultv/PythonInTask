@@ -16,6 +16,7 @@ namespace InTask
 
         public readonly string fileText = Directory.GetCurrentDirectory() + "\\file_text.txt";
         public readonly string fileDictionary = Directory.GetCurrentDirectory() + "\\file_dictionary.txt";
+        public readonly string fileHtml = Directory.GetCurrentDirectory() + "\\file_result.html";
 
         public MainForm()
         {
@@ -51,10 +52,19 @@ namespace InTask
             }
             else
             {
+                HtmlCreator html = new HtmlCreator();
 
-            }
-            
+                using (StreamWriter writer = new StreamWriter(fileHtml))
+                {
 
+                    html.CreateHeader(writer);
+
+
+
+
+                    html.CreateFoother(writer);
+                }
+            }            
         }
     }
 }
