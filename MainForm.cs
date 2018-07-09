@@ -25,8 +25,12 @@ namespace InTask
         }
 
         /// <summary>
-        /// Кнопка "Выполнить".
+        /// Нажптие на кнопку "Выполнить".
         /// Производит проверку файла словаря и файла с текстом на наличие и соответствие максимально допустимому размеру.
+        /// Загружает данные в "словарь".
+        /// Создает или открывает html файл.
+        /// Построчно: читает файл с текстом и передаёт для сравнения в "словарь", записывает полученный результат.
+        /// Закрывает html файл, запускает его выполнение.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -57,33 +61,41 @@ namespace InTask
                 DictionaryController dict = new DictionaryController();
 
                 dict.LoadDictionary();
-
-                using (StreamWriter writer = new StreamWriter(fileHtml))
+               
+                try
                 {
-
-                    html.CreateHeader(writer);
-
-                    using (StreamReader reader = new StreamReader(fileText, Encoding.GetEncoding(1251)))
+                    using (StreamWriter writer = new StreamWriter(fileHtml))
                     {
-                        while (!reader.EndOfStream)
+
+                        html.CreateHeader(writer);
+
+                        using (StreamReader reader = new StreamReader(fileText, Encoding.GetEncoding(1251)))
                         {
-
-                            string strIn = reader.ReadLine();
-                            if((strIn != dict.Start) && (strIn != dict.End))
+                            while (!reader.EndOfStream)
                             {
-                                string strOut = dict.CompareDictionary(strIn);
-                                writer.WriteLine(strOut + "<br>");
-                                strOut = "";
+
+                                string strIn = reader.ReadLine();
+                                if ((strIn != dict.Start) && (strIn != dict.End))
+                                {
+                                    string strOut = dict.CompareDictionary(strIn);
+                                    writer.WriteLine(strOut + "<br>");
+                                    strOut = "";
+                                }
+
+                                strIn = "";
                             }
-
-                            strIn = "";                                                        
                         }
-                    }
-                        
-                    html.CreateFoother(writer);
-                }
 
-                Process.Start(fileHtml);
+                        html.CreateFoother(writer);
+                    }
+
+                    Process.Start(fileHtml);
+
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    MessageBox.Show($"Ошибка записи в файл {fileHtml}. Закройте все программы испоьзующие файл. Файл не должен иметь атрибуты 'Скрытый' или 'Только чтение'.");
+                }
             }            
         }
     }
