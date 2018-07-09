@@ -41,11 +41,11 @@ namespace InTask
 
         /// <summary>
         /// Разделяет строку на слова.
-        /// Сравнивает каждое слова со словами в словаре.
+        /// Сравнивает каждое слово со словами в словаре.
         /// Форматирует строу с учётом результатов сравнения.
         /// </summary>
         /// <param name="str"></param>
-        /// <returns></returns>
+        /// <returns>Возвращает форматированную строку.</returns>
         public string CompareDictionary(string str)
         {
 

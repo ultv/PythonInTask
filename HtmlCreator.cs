@@ -20,17 +20,7 @@ namespace InTask
         {
             writer.WriteLine(HTML_HEADER);
         }
-
-        /// <summary>
-        /// Создает "тело" html файла.
-        /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="str"></param>
-        public void CreateBody(StreamWriter writer, string str)
-        {
-            writer.WriteLine(str);
-        }
-
+        
         /// <summary>
         /// Создаёт "подвал" html файла.
         /// </summary>
@@ -41,11 +31,5 @@ namespace InTask
         }
 
     }
-
-
-
-
-
-
    
 }
