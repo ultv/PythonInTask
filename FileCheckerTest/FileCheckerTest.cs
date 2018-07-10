@@ -85,5 +85,42 @@ namespace FileCheckerTest
             Assert.AreEqual(expected, actual);
         }
 
+
+        [TestMethod]
+        public void CompareDictionary_word_in_dictionary__formated_word_returned()
+        {
+            //Arrange            
+            DictionaryController dict = new DictionaryController();
+            dict.Dict.Add("Проверка");
+
+            string accept = "Проверка";
+            string expected = " <b><i>Проверка</i></b> ";
+
+            //Act
+            string actual = dict.CompareDictionary(accept);
+
+            //Result
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [TestMethod]
+        public void CompareDictionary_word_not_in_dictionary__not_formated_word_returned()
+        {
+            //Arrange            
+            DictionaryController dict = new DictionaryController();
+            dict.Dict.Add("Проверка");
+
+            string accept = "Отвертка";
+            string expected = "Отвертка ";
+
+            //Act
+            string actual = dict.CompareDictionary(accept);
+
+            //Result
+            Assert.AreEqual(expected, actual);
+        }
+
     }
+
 }

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace InTask
 {
-    class DictionaryController
+    public class DictionaryController
     {        
         public List<string> Dict { get; set; }
         public string[] StrSplit { get; set; }
@@ -60,7 +60,7 @@ namespace InTask
                 {
 
                     if (Dict.Contains(word))
-                        Compare = Compare + " <b><i>" + word + "</b></i> ";
+                        Compare = Compare + " <b><i>" + word + "</i></b> ";
                     else
                         Compare = Compare + word + " ";
                 }
