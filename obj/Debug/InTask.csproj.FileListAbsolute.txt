@@ -1,0 +1,10 @@
+C:\CODE\PYTHON\InTask\bin\Debug\InTask.exe.config
+C:\CODE\PYTHON\InTask\bin\Debug\InTask.exe
+C:\CODE\PYTHON\InTask\bin\Debug\InTask.pdb
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.csprojAssemblyReference.cache
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.MainForm.resources
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.Properties.Resources.resources
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.csproj.GenerateResource.cache
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.csproj.CoreCompileInputs.cache
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.exe
+C:\CODE\PYTHON\InTask\obj\Debug\InTask.pdb
